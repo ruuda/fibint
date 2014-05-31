@@ -7,8 +7,6 @@ u64 mulmod(u64 a, u64 b, u64 m)
 {
   u64 r = 0;
   u64 s = 0;
-  a %= m;
-  b %= m;
 
   while (b > 0)
   {
@@ -21,12 +19,26 @@ u64 mulmod(u64 a, u64 b, u64 m)
   return r;
 }
 
+u64 powmod(u64 a, u64 e, u64 m)
+{
+  u64 r = 1;
+  
+  while (e > 0)
+  {
+    r = (e & 1) * mulmod(r, a, m) + (1 - (e & 1)) * r;
+    e >>= 1;
+    a = mulmod(a, a, m);
+  }
+
+  return r;
+}
+
 int main()
 {
   u64 a, b, m;
   std::cin >> a;
   std::cin >> b;
   std::cin >> m;
-  std::cout << mulmod(a, b, m);
+  std::cout << powmod(a, b, m);
   return 0;
 }
