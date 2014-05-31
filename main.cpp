@@ -34,13 +34,13 @@ u64 powmod(u64 a, u64 e, u64 m)
 }
 
 const u64 prime = 12200160415121876909;
+const u64 sqrt5 = 833731445503647576;
 
 int main()
 {
-  u64 a, b, m;
+  u64 a, b;
   std::cin >> a;
   std::cin >> b;
-  std::cin >> m;
-  std::cout << powmod(a, b, m);
+  std::cout << mulmod(a, b, prime);
   return 0;
 }
