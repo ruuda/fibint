@@ -33,6 +33,8 @@ u64 powmod(u64 a, u64 e, u64 m)
   return r;
 }
 
+const u64 prime = 12200160415121876909;
+
 int main()
 {
   u64 a, b, m;
