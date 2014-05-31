@@ -53,8 +53,7 @@ u64 fib(u64 n)
 
 int main()
 {
-  u64 n;
-  std::cin >> n;
-  std::cout << fib(n);
+  for (u64 i = 0; i < 94; i++)
+  std::cout << fib(i) << std::endl;
   return 0;
 }
