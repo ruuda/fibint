@@ -138,7 +138,7 @@ template <typename T> void bench()
   auto duration = duration_cast<milliseconds>(end - begin);
   std::cout << duration.count() << std::endl;
 
-  std::cout << acc[0] + acc[1] + acc[2] + acc[3] << std::endl;
+  std::cout << "bogus: " << acc[0] + acc[1] + acc[2] + acc[3] << std::endl;
 }
 
 template <typename T> void print()
