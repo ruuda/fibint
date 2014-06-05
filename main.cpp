@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <cstring>
 #include <iostream>
+#include <chrono>
 
 typedef std::uint8_t  u8;
 typedef std::uint16_t u16;
@@ -106,6 +107,12 @@ template <typename T> void bench()
 {
   T acc[] = { 0, 0, 0, 0 };
 
+  using std::chrono::high_resolution_clock;
+  using std::chrono::duration_cast;
+  using std::chrono::milliseconds;
+
+  auto begin = high_resolution_clock::now();
+
   // The actual numbers are not very important here, just loop a lot,
   // so it takes a few seconds to complete.
   for (int j = 0; j < 4096 * 64 / (fib_traits<T>::fib_max + 1); j++)
@@ -125,6 +132,11 @@ template <typename T> void bench()
     acc[0] |= acc[1] & acc[3];
     acc[2] |= acc[1] & acc[3];
   }
+
+  auto end = high_resolution_clock::now();
+
+  auto duration = duration_cast<milliseconds>(end - begin);
+  std::cout << duration.count() << std::endl;
 
   std::cout << acc[0] + acc[1] + acc[2] + acc[3] << std::endl;
 }
