@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <cstring>
 #include <iostream>
 
 typedef std::uint8_t  u8;
@@ -91,19 +92,79 @@ template <typename T> T fib(T n)
   const T sqrt5 = fib_traits<T>::sqrt5;
   const T sqrt5inv = fib_traits<T>::inv_sqrt5;
 
-  u64 a = powmod(1 + sqrt5, n, prime);
-  u64 b = powmod(prime + 1 - sqrt5, n, prime);
-  u64 invpow2 = powmod<T>(2, prime - 1 - n, prime);
+  const T a = powmod<T>(1 + sqrt5, n, prime);
+  const T b = powmod<T>(prime + 1 - sqrt5, n, prime);
+  const T invpow2 = powmod<T>(2, prime - 1 - n, prime);
 
-  u64 phin_minus_psin = (a > b) ? a - b : (prime - b) + a;
-  u64 factor = mulmod(sqrt5inv, invpow2, prime);
+  const T phin_minus_psin = (a > b) ? a - b : (prime - b) + a;
+  const T factor = mulmod(sqrt5inv, invpow2, prime);
 
   return mulmod(phin_minus_psin, factor, prime);
 }
 
-int main()
+template <typename T> void bench()
 {
-  for (u64 i = 0; i < 94; i++)
-  std::cout << fib(i) << std::endl;
+  T acc[] = { 0, 0, 0, 0 };
+
+  // The actual numbers are not very important here, just loop a lot,
+  // so it takes a few seconds to complete.
+  for (int j = 0; j < 4096 * 64 / (fib_traits<T>::fib_max + 1); j++)
+  {
+    for (T i = 0; i <= fib_traits<T>::fib_max; i++)
+    {
+      // The xor here is also not very important, it is only used to create
+      // some data dependencies to avoid optimising it away. It is done on
+      // four independent values so that data dependencies will not be the
+      // bottleneck.
+      acc[i % 4] ^= fib(i);
+    }
+    
+    // This just creates some data dependencies between loops (because xor is
+    // symmetric, so we have to use some operation that does not commute with
+    // xor.)
+    acc[0] |= acc[1] & acc[3];
+    acc[2] |= acc[1] & acc[3];
+  }
+
+  std::cout << acc[0] + acc[1] + acc[2] + acc[3] << std::endl;
+}
+
+template <typename T> void print()
+{
+  for (T i = 0; i <= fib_traits<T>::fib_max; i++)
+  {
+    std::cout << fib(i) << std::endl;
+  }
+}
+
+template <> void print<u8>()
+{
+  for (u8 i = 0; i <= fib_traits<u8>::fib_max; i++)
+  {
+    std::cout << static_cast<int>(fib<u8>(i)) << std::endl;
+  }
+}
+
+int main(int argc, char** argv)
+{
+  if (argc > 2)
+  {
+    if (0 == strcmp(argv[1], "bench"))
+    {
+      if (0 == strcmp(argv[2], "8"))  bench<u8>();
+      if (0 == strcmp(argv[2], "16")) bench<u16>();
+      if (0 == strcmp(argv[2], "32")) bench<u32>();
+      if (0 == strcmp(argv[2], "64")) bench<u64>();
+    }
+
+    if (0 == strcmp(argv[1], "print"))
+    {
+      if (0 == strcmp(argv[2], "8"))  print<u8>();
+      if (0 == strcmp(argv[2], "16")) print<u16>();
+      if (0 == strcmp(argv[2], "32")) print<u32>();
+      if (0 == strcmp(argv[2], "64")) print<u64>();
+    }
+  }
+
   return 0;
 }
