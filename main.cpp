@@ -8,6 +8,12 @@ typedef std::uint16_t u16;
 typedef std::uint32_t u32;
 typedef std::uint64_t u64;
 
+static_assert(sizeof(float)  == 4, "The `float` type must be 32 bits.");
+static_assert(sizeof(double) == 8, "The `double` type must be 64 bits.");
+
+typedef float  f32;
+typedef double f64;
+
 template <typename T> void bench()
 {
   T acc[] = { 0, 0, 0, 0 };
