@@ -81,9 +81,8 @@ template <typename T> T powmod(T a, T e, T m)
 
 template <typename T> T fib(T n)
 {
-  // Note: it is assumed that n is not larger than
-  // fib_traits<T>::prime, otherwise the results
-  // are incorrect. Note that this is not a big problem,
+  // Note: it is assumed that n is not larger than fib_traits<T>::prime,
+  // otherwise the results are incorrect. Note that this is not a big problem,
   // because fib_traits<T>::fib_max < fib_traits<T>::prime.
 
   const T p     = fib_traits<T>::prime;
