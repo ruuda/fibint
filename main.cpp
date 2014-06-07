@@ -1,9 +1,9 @@
 // fibint -- compute Fibonacci numbers efficiently using finite fields
 // Copyright © 2014 Ruud van Asseldonk, licensed under the MIT licence
 
+#include <chrono>
 #include <cstring>
 #include <iostream>
-#include <chrono>
 #include "fibint.h"
 #include "fibfloat.h"
 
