@@ -8,7 +8,7 @@ template <> class fib_traits<std::uint8_t>
     static const std::uint8_t fib_max   = 0x0d;
     static const std::uint8_t prime     = 0xef;
     static const std::uint8_t sqrt5     = 0x1f;
-    static const std::uint8_t inv_sqrt5 = 0x36;
+    static const std::uint8_t sqrt5_inv = 0x36;
 };
 
 template <> class fib_traits<std::uint16_t>
@@ -17,7 +17,7 @@ template <> class fib_traits<std::uint16_t>
     static const std::uint16_t fib_max   = 0x18;
     static const std::uint16_t prime     = 0xb52d;
     static const std::uint16_t sqrt5     = 0x57e5;
-    static const std::uint16_t inv_sqrt5 = 0xa285;
+    static const std::uint16_t sqrt5_inv = 0xa285;
 };
 
 template <> class fib_traits<std::uint32_t>
@@ -26,7 +26,7 @@ template <> class fib_traits<std::uint32_t>
     static const std::uint32_t fib_max   = 0x2f;
     static const std::uint32_t prime     = 0xb119254b;
     static const std::uint32_t sqrt5     = 0x1d582345;
-    static const std::uint32_t inv_sqrt5 = 0x2949db50;
+    static const std::uint32_t sqrt5_inv = 0x2949db50;
 };
 
 template <> class fib_traits<std::uint64_t>
@@ -35,7 +35,7 @@ template <> class fib_traits<std::uint64_t>
     static const std::uint64_t fib_max   = 0x5d;
     static const std::uint64_t prime     = 0xa94fad42221f27ad;
     static const std::uint64_t sqrt5     = 0xb92025517515f58;
-    static const std::uint64_t inv_sqrt5 = 0x242d231e3eb01b01;
+    static const std::uint64_t sqrt5_inv = 0x242d231e3eb01b01;
 };
 
 /* If your platform supports unsigned __int128, you can try this one as well.
@@ -81,16 +81,16 @@ template <typename T> T powmod(T a, T e, T m)
 
 template <typename T> T fib(T n)
 {
-  const T prime = fib_traits<T>::prime;
-  const T sqrt5 = fib_traits<T>::sqrt5;
-  const T sqrt5inv = fib_traits<T>::inv_sqrt5;
+  const T p     = fib_traits<T>::prime;
+  const T v     = fib_traits<T>::sqrt5;
+  const T v_inv = fib_traits<T>::sqrt5_inv;
 
-  const T a = powmod<T>(1 + sqrt5, n, prime);
-  const T b = powmod<T>(prime + 1 - sqrt5, n, prime);
-  const T invpow2 = powmod<T>(2, prime - 1 - n, prime);
+  const T a = powmod<T>(1 + v, n, p);
+  const T b = powmod<T>(p + 1 - v, n, p);
+  const T pow2_inv = powmod<T>(2, p - 1 - n, p);
 
-  const T phin_minus_psin = (a > b) ? a - b : (prime - b) + a;
-  const T factor = mulmod(sqrt5inv, invpow2, prime);
+  const T phin_minus_psin = (a > b) ? a - b : (p - b) + a;
+  const T factor = mulmod(v_inv, pow2_inv, p);
 
-  return mulmod(phin_minus_psin, factor, prime);
+  return mulmod(phin_minus_psin, factor, p);
 }
