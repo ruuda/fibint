@@ -70,18 +70,18 @@ int main(int argc, char** argv)
   {
     if (0 == strcmp(argv[1], "bench"))
     {
-      if (0 == strcmp(argv[2], "8"))  bench<u8>();
-      if (0 == strcmp(argv[2], "16")) bench<u16>();
-      if (0 == strcmp(argv[2], "32")) bench<u32>();
-      if (0 == strcmp(argv[2], "64")) bench<u64>();
+      if (0 == strcmp(argv[2], "u8"))  bench<u8>();
+      if (0 == strcmp(argv[2], "u16")) bench<u16>();
+      if (0 == strcmp(argv[2], "u32")) bench<u32>();
+      if (0 == strcmp(argv[2], "u64")) bench<u64>();
     }
 
     if (0 == strcmp(argv[1], "print"))
     {
-      if (0 == strcmp(argv[2], "8"))  print<u8>();
-      if (0 == strcmp(argv[2], "16")) print<u16>();
-      if (0 == strcmp(argv[2], "32")) print<u32>();
-      if (0 == strcmp(argv[2], "64")) print<u64>();
+      if (0 == strcmp(argv[2], "u8"))  print<u8>();
+      if (0 == strcmp(argv[2], "u16")) print<u16>();
+      if (0 == strcmp(argv[2], "u32")) print<u32>();
+      if (0 == strcmp(argv[2], "u64")) print<u64>();
     }
   }
 
