@@ -5,47 +5,47 @@ template <typename T> class fib_traits { };
 template <> class fib_traits<std::uint8_t>
 {
   public:
-    static const std::uint8_t fib_max   = 13;
-    static const std::uint8_t prime     = 239;
-    static const std::uint8_t sqrt5     = 31;
-    static const std::uint8_t inv_sqrt5 = 54;
+    static const std::uint8_t fib_max   = 0x0d;
+    static const std::uint8_t prime     = 0xef;
+    static const std::uint8_t sqrt5     = 0x1f;
+    static const std::uint8_t inv_sqrt5 = 0x36;
 };
 
 template <> class fib_traits<std::uint16_t>
 {
   public:
-    static const std::uint16_t fib_max   = 24;
-    static const std::uint16_t prime     = 46381;
-    static const std::uint16_t sqrt5     = 22501;
-    static const std::uint16_t inv_sqrt5 = 41605;
+    static const std::uint16_t fib_max   = 0x18;
+    static const std::uint16_t prime     = 0xb52d;
+    static const std::uint16_t sqrt5     = 0x57e5;
+    static const std::uint16_t inv_sqrt5 = 0xa285;
 };
 
 template <> class fib_traits<std::uint32_t>
 {
   public:
-    static const std::uint32_t fib_max   = 47;
-    static const std::uint32_t prime     = 2971215179;
-    static const std::uint32_t sqrt5     = 492315461;
-    static const std::uint32_t inv_sqrt5 = 692706128;
+    static const std::uint32_t fib_max   = 0x2f;
+    static const std::uint32_t prime     = 0xb119254b;
+    static const std::uint32_t sqrt5     = 0x1d582345;
+    static const std::uint32_t inv_sqrt5 = 0x2949db50;
 };
 
 template <> class fib_traits<std::uint64_t>
 {
   public:
-    static const std::uint64_t fib_max   = 93;
-    static const std::uint64_t prime     = 12200160415121876909;
-    static const std::uint64_t sqrt5     = 833731445503647576;
-    static const std::uint64_t inv_sqrt5 = 2606778372125104897;
+    static const std::uint64_t fib_max   = 0x5d;
+    static const std::uint64_t prime     = 0xa94fad42221f27ad;
+    static const std::uint64_t sqrt5     = 0xb92025517515f58;
+    static const std::uint64_t inv_sqrt5 = 0x242d231e3eb01b01;
 };
 
 /* If your platform supports unsigned __int128, you can try this one as well.
 template <> class fib_traits<unsigned __int128>
 {
   public:
-    static const unsigned __int128 fib_max   = 186;
-    static const unsigned __int128 prime     = 332825110087067562321196029789634457911;
-    static const unsigned __int128 sqrt5     = 10426323296737204245551694426008962215;
-    static const unsigned __int128 inv_sqrt5 = 2085264659347440849110338885201792443;
+    static const unsigned __int128 fib_max   = 0xba;
+    static const unsigned __int128 prime     = 0xfa63c8d9fa216a8fc8a7213b33327137;
+    static const unsigned __int128 sqrt5     = 0x07d8096d5806fbc95c1b79206a07c4a7;
+    static const unsigned __int128 inv_sqrt5 = 0x01919b7c44ce325b78d24b6ce2018dbb;
 };
 */
 
