@@ -74,14 +74,6 @@ template <typename T> void print()
   }
 }
 
-template <> void print<u8>()
-{
-  for (u8 i = 0; i <= fib_traits<u8>::fib_max; i++)
-  {
-    std::cout << static_cast<u64>(fib<u8>(i)) << std::endl;
-  }
-}
-
 int main(int argc, char** argv)
 {
   if (argc > 2)
