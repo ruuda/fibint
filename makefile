@@ -5,4 +5,4 @@ clang:
 	clang++ -O3 -march=native -cstd=c++11 main.cpp
 
 msvc110:
-	cl /Ox main.cpp
+	cl /W4 /Ox main.cpp
