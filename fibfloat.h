@@ -2,7 +2,6 @@
 // Copyright © 2014 Ruud van Asseldonk, licensed under the MIT licence
 
 #include <cmath>
-#include <cstdint>
 
 template <> struct fib_traits<float>
 {
