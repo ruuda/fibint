@@ -1,51 +1,46 @@
 #include <cstdint>
 
-template <typename T> class fib_traits { };
+template <typename T> struct fib_traits { };
 
-template <> class fib_traits<std::uint8_t>
+template <> struct fib_traits<std::uint8_t>
 {
-  public:
-    static const int fib_max = 13;
-    static const std::uint8_t prime     = 0xef;
-    static const std::uint8_t sqrt5     = 0x1f;
-    static const std::uint8_t sqrt5_inv = 0x36;
+  static const int fib_max = 13;
+  static const std::uint8_t prime     = 0xef;
+  static const std::uint8_t sqrt5     = 0x1f;
+  static const std::uint8_t sqrt5_inv = 0x36;
 };
 
-template <> class fib_traits<std::uint16_t>
+template <> struct fib_traits<std::uint16_t>
 {
-  public:
-    static const int fib_max = 24;
-    static const std::uint16_t prime     = 0xb52d;
-    static const std::uint16_t sqrt5     = 0x57e5;
-    static const std::uint16_t sqrt5_inv = 0xa285;
+  static const int fib_max = 24;
+  static const std::uint16_t prime     = 0xb52d;
+  static const std::uint16_t sqrt5     = 0x57e5;
+  static const std::uint16_t sqrt5_inv = 0xa285;
 };
 
-template <> class fib_traits<std::uint32_t>
+template <> struct fib_traits<std::uint32_t>
 {
-  public:
-    static const int fib_max = 47;
-    static const std::uint32_t prime     = 0xb119254b;
-    static const std::uint32_t sqrt5     = 0x1d582345;
-    static const std::uint32_t sqrt5_inv = 0x2949db50;
+  static const int fib_max = 47;
+  static const std::uint32_t prime     = 0xb119254b;
+  static const std::uint32_t sqrt5     = 0x1d582345;
+  static const std::uint32_t sqrt5_inv = 0x2949db50;
 };
 
-template <> class fib_traits<std::uint64_t>
+template <> struct fib_traits<std::uint64_t>
 {
-  public:
-    static const int fib_max = 93;
-    static const std::uint64_t prime     = 0xa94fad42221f27ad;
-    static const std::uint64_t sqrt5     = 0x0b92025517515f58;
-    static const std::uint64_t sqrt5_inv = 0x242d231e3eb01b01;
+  static const int fib_max = 93;
+  static const std::uint64_t prime     = 0xa94fad42221f27ad;
+  static const std::uint64_t sqrt5     = 0x0b92025517515f58;
+  static const std::uint64_t sqrt5_inv = 0x242d231e3eb01b01;
 };
 
 /* If your platform supports unsigned __int128, you can try this one as well.
-template <> class fib_traits<unsigned __int128>
+template <> struct fib_traits<unsigned __int128>
 {
-  public:
-    static const int fib_max = 186;
-    static const unsigned __int128 prime     = 0xfa63c8d9fa216a8fc8a7213b33327137;
-    static const unsigned __int128 sqrt5     = 0x07d8096d5806fbc95c1b79206a07c4a7;
-    static const unsigned __int128 inv_sqrt5 = 0x01919b7c44ce325b78d24b6ce2018dbb;
+  static const int fib_max = 186;
+  static const unsigned __int128 prime     = 0xfa63c8d9fa216a8fc8a7213b33327137;
+  static const unsigned __int128 sqrt5     = 0x07d8096d5806fbc95c1b79206a07c4a7;
+  static const unsigned __int128 inv_sqrt5 = 0x01919b7c44ce325b78d24b6ce2018dbb;
 };
 */
 

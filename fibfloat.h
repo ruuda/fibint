@@ -1,18 +1,16 @@
 #include <cstdint>
 #include <cmath>
 
-template <> class fib_traits<float>
+template <> struct fib_traits<float>
 {
-  public:
-    // Note that on my machine, values were only accurate up to 32.
-    static const int fib_max = 47;
+  // Note that on my machine, values were only accurate up to 32.
+  static const int fib_max = 47;
 };
 
-template <> class fib_traits<double>
+template <> struct fib_traits<double>
 {
-  public:
-    // Note that on my machine, values were only accurates up to 71.
-    static const int fib_max = 93;
+  // Note that on my machine, values were only accurates up to 71.
+  static const int fib_max = 93;
 };
 
 template <typename T> T fibfloat(T n)
