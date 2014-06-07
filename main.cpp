@@ -20,7 +20,8 @@ template <typename T> void bench()
 
   // The actual numbers are not very important here, just loop a lot,
   // so it takes a few seconds to complete.
-  for (int j = 0; j < 4096 * 64 / (fib_traits<T>::fib_max + 1); j++)
+  const int n = 4096 * 64 / (fib_traits<T>::fib_max + 1);
+  for (int j = 0; j < n; j++)
   {
     for (T i = 0; i <= fib_traits<T>::fib_max; i++)
     {
@@ -43,6 +44,7 @@ template <typename T> void bench()
   auto duration = duration_cast<milliseconds>(end - begin);
   std::cout << duration.count() << std::endl;
 
+  std::cout << "iters: " << n * (fib_traits<T>::fib_max + 1)  << std::endl;
   std::cout << "bogus: " << acc[0] + acc[1] + acc[2] + acc[3] << std::endl;
 }
 
