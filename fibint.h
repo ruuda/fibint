@@ -34,7 +34,7 @@ template <> class fib_traits<std::uint64_t>
   public:
     static const std::uint64_t fib_max   = 0x5d;
     static const std::uint64_t prime     = 0xa94fad42221f27ad;
-    static const std::uint64_t sqrt5     = 0xb92025517515f58;
+    static const std::uint64_t sqrt5     = 0x0b92025517515f58;
     static const std::uint64_t sqrt5_inv = 0x242d231e3eb01b01;
 };
 
