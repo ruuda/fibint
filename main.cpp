@@ -1,3 +1,6 @@
+// fibint -- compute Fibonacci numbers efficiently using finite fields
+// Copyright © 2014 Ruud van Asseldonk, licensed under the MIT licence
+
 #include <cstring>
 #include <iostream>
 #include <chrono>

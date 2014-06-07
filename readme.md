@@ -14,3 +14,8 @@ expression in a finite field that is big enough to contain the largest
 representable Fibonacci number.
 
 I will publish a blog post with a thorough explanation shortly.
+
+Licence
+-------
+This project is an implementation of a mathematical concept. The
+implementation is licensed under the MIT license. See the file `copying`.
