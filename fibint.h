@@ -43,7 +43,7 @@ template <> struct fib_traits<unsigned __int128>
   static const int fib_max = 186;
   static const unsigned __int128 prime     = 0xfa63c8d9fa216a8fc8a7213b33327137;
   static const unsigned __int128 sqrt5     = 0x07d8096d5806fbc95c1b79206a07c4a7;
-  static const unsigned __int128 inv_sqrt5 = 0x01919b7c44ce325b78d24b6ce2018dbb;
+  static const unsigned __int128 sqrt5_inv = 0x01919b7c44ce325b78d24b6ce2018dbb;
 };
 */
 
