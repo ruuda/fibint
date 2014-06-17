@@ -11,7 +11,7 @@ template <> struct fib_traits<float>
 
 template <> struct fib_traits<double>
 {
-  // Note that on my machine, values were only accurates up to 71.
+  // Note that on my machine, values were only accurate up to 71.
   static const int fib_max = 93;
 };
 

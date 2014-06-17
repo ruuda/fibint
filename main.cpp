@@ -51,7 +51,7 @@ template <typename T> void bench()
     
     // This just creates some data dependencies between loops (because xor is
     // symmetric, so we have to use some operation that does not commute with
-    // xor.)
+    // xor).
     acc[0].raw |= acc[1].raw & acc[3].raw;
     acc[2].raw |= acc[1].raw & acc[3].raw;
   }
