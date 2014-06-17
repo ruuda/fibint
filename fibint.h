@@ -87,12 +87,12 @@ template <typename T> T fib(T n)
   const T v     = fib_traits<T>::sqrt5;
   const T v_inv = fib_traits<T>::sqrt5_inv;
 
-  const T a = powmod<T>(1 + v, n, p);
-  const T b = powmod<T>(p + 1 - v, n, p);
+  const T a        = powmod<T>(1 + v, n, p);
+  const T b        = powmod<T>(p + 1 - v, n, p);
   const T pow2_inv = powmod<T>(2, p - 1 - n, p);
 
-  const T phin_minus_psin = (a > b) ? a - b : (p - b) + a;
+  const T diff   = (a > b) ? a - b : (p - b) + a;
   const T factor = mulmod(v_inv, pow2_inv, p);
 
-  return mulmod(phin_minus_psin, factor, p);
+  return mulmod(diff, factor, p);
 }
