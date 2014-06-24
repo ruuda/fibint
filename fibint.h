@@ -53,6 +53,12 @@ template <typename T> T addmod(T a, T b, T m)
   else return a + b - m;
 }
 
+template <typename T> T submod(T a, T b, T m)
+{
+  if (a > b) return a - b;
+  else return m - b + a;
+}
+
 template <typename T> T mulmod(T a, T b, T m)
 {
   T r = 0;
@@ -95,7 +101,7 @@ template <typename T> T fib(T n)
   const T b        = powmod<T>(p + 1 - v, n, p);
   const T pow2_inv = powmod<T>(2, p - 1 - n, p);
 
-  const T diff   = (a > b) ? a - b : (p - b) + a;
+  const T diff   = submod(a, b, p);
   const T factor = mulmod(v_inv, pow2_inv, p);
 
   return mulmod(diff, factor, p);
