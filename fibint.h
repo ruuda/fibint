@@ -47,17 +47,21 @@ template <> struct fib_traits<unsigned __int128>
 };
 */
 
+template <typename T> T addmod(T a, T b, T m)
+{
+  if (m - b > a) return a + b;
+  else return a + b - m;
+}
+
 template <typename T> T mulmod(T a, T b, T m)
 {
   T r = 0;
-  T s = 0;
 
   while (b > 0)
   {
-    s = ((m - r) > a) ? r + a : r + a - m;
-    r = (b & 1) * s + (1 - (b & 1)) * r;
+    if (b & 1) r = addmod(a, r, m);
     b >>= 1;
-    a = ((m - a) > a) ? a + a : a + a - m;
+    a = addmod(a, a, m);
   }
 
   return r;
@@ -69,7 +73,7 @@ template <typename T> T powmod(T a, T e, T m)
   
   while (e > 0)
   {
-    r = (e & 1) * mulmod(r, a, m) + (1 - (e & 1)) * r;
+    if (e & 1) r = mulmod(r, a, m);
     e >>= 1;
     a = mulmod(a, a, m);
   }
