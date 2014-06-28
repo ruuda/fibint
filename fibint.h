@@ -55,7 +55,7 @@ template <typename T> T addmod(T a, T b, T m)
 
 template <typename T> T submod(T a, T b, T m)
 {
-  if (a > b) return a - b;
+  if (a >= b) return a - b;
   else return m - b + a;
 }
 
