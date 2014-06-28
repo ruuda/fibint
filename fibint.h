@@ -87,7 +87,7 @@ template <typename T> T powmod(T a, T e, T m)
     // masking, for a 64-bit integer on my machine, with msvc110, GCC 4.9, and
     // Clang 3.4.
 
-    if (e & 1) r = mulmod(r, a, m);
+    if (e & 1) r = mulmod(a, r, m);
     e >>= 1;
     a = mulmod(a, a, m);
   }
