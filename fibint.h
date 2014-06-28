@@ -69,7 +69,7 @@ template <typename T> T mulmod(T a, T b, T m)
     // conditional, with GCC 4.9 and Clang 3.4 for a 64-bit integer,
     // on my machine.
 
-    r = addmod(a, r, m) * (b & 1) + r * (1 - (b & 1));
+    r = addmod(r, a, m) * (b & 1) + r * (1 - (b & 1));
     b >>= 1;
     a = addmod(a, a, m);
   }
@@ -87,7 +87,7 @@ template <typename T> T powmod(T a, T e, T m)
     // masking, for a 64-bit integer on my machine, with msvc110, GCC 4.9, and
     // Clang 3.4.
 
-    if (e & 1) r = mulmod(a, r, m);
+    if (e & 1) r = mulmod(r, a, m);
     e >>= 1;
     a = mulmod(a, a, m);
   }
