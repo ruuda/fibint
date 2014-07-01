@@ -13,7 +13,8 @@ number in the field of real numbers, it uses an analogous closed-form
 expression in a finite field that is big enough to contain the largest
 representable Fibonacci number.
 
-I will publish a blog post with a thorough explanation shortly.
+See my [blog post](http://ruudvanasseldonk.com/2014/07/01/fibonacci-numbers-in-finite-fields)
+for a more thorough explanation.
 
 Licence
 -------
