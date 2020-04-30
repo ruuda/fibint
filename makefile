@@ -17,4 +17,4 @@ msvc-pgo:
 	link /ltcg:pgo /pgd:fibint.pgd main.obj /out:fibint.exe
 
 msvc-clean:
-	rm main.obj fibint!?.pgc fibint.pgd fibint.exe
+	del main.obj fibint!?.pgc fibint.pgd fibint.exe
